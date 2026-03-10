@@ -35,7 +35,30 @@
        trí đánh dấu ở giữa */
     static int RecuSearch3(Array arr, int value)
     {
+        //Khởi tạo from = mid(arr)~(upper+lower)/2
+        //Nếu arr[from]==value => return from
+        //Ngược lại:
+        //      Tạo 2 mảng:
+        //              newarr1[arr.lowerbound->from]
+        //              newarr2[from->arr.upperbound]
+        //      Gọi RecuSearch3 trên newarr1 và newarr2
         return 0;
+    }
+    static int SentSearch(int[] arr, int value)
+    {
+        int temp = arr[arr.Length-1];
+        arr[arr.Length-1] = value;//đặt value vào vị trí cuối
+        int index = SeqSearch(arr, value);
+        arr[arr.Length-1] = temp;//hoàn trả phần tử cuối
+        if(index<arr.Length-1)
+            return index;
+        else
+        {
+            if(arr[arr.Length-1]==value)
+                return index;
+            else
+                return -1;
+        }
     }
     static void Main(string[] args)
     {
@@ -52,5 +75,9 @@
         int v = 4;
         int index3 = RecuSearch2(ar, v);
         Console.WriteLine($"RecuSearch2: {index3}");
+
+        int val2 = 19;
+        int index4 = SentSearch(a, val2);
+        Console.WriteLine($"SentSearch: {index4}");
     }
 }
