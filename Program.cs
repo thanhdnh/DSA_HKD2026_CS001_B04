@@ -31,7 +31,7 @@
             return RecuSearch2(newarr, value);
         }
     }
-    /* Xây dựng RecuSearch3 cải tiến từ RecuSearch2 với vị
+    /* Bài tập 1: Xây dựng RecuSearch3 cải tiến từ RecuSearch2 với vị
        trí đánh dấu ở giữa */
     static int RecuSearch3(Array arr, int value)
     {
@@ -60,6 +60,32 @@
                 return -1;
         }
     }
+    static int BinSearch(int[] arr, int value)
+    {
+        int left = 0, right = arr.Length-1;
+        while (left<=right)
+        {
+            int mid = (left+right)/2;
+            if(value==arr[mid])
+                return mid;
+            else if(value>arr[mid])
+                left = mid+1;
+            else
+                right = mid-1;
+        }
+        return -1;
+    }
+    static int BinSearch2(int[] arr, int left, int right, int val)
+    {
+        if (left > right) return -1;
+        int mid = (left + right) / 2;
+        if (arr[mid] == val) return mid;
+        else if(val > arr[mid]) 
+            return BinSearch2(arr, mid + 1, right, val);
+        else 
+            return BinSearch2(arr, left, mid - 1, val);
+    }
+    //Bài tập 2: Cài đặt BinSearch3 đệ quy với Array
     static void Main(string[] args)
     {
         int[] a = {4, 1, 9, 6};
@@ -79,5 +105,13 @@
         int val2 = 19;
         int index4 = SentSearch(a, val2);
         Console.WriteLine($"SentSearch: {index4}");
+
+        int[] b = {1, 4, 7, 9, 11, 15};
+        int val3 = 11;
+        int index5 = BinSearch(b, val3);
+        Console.WriteLine($"BinSearch: {index5}");
+        
+        int index6 = BinSearch2(b, 0, b.Length - 1, val3);
+        Console.Write($"BinSearch2: {index6}\n");
     }
 }
