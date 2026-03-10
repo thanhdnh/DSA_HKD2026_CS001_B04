@@ -86,6 +86,8 @@
             return BinSearch2(arr, left, mid - 1, val);
     }
     //Bài tập 2: Cài đặt BinSearch3 đệ quy với Array
+    //Bài tập 3: Cài đặt TriSearch (chia ba mảng)
+    //Bài tập 4: so sánh thời gian của các phiên bản tìm kiếm với mảng đã được sắp xếp
     static void Main(string[] args)
     {
         int[] a = {4, 1, 9, 6};
